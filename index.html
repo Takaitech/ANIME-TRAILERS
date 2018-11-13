@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Anime Trailers</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="main.css" rel="stylesheet" type="text/css">
+        <link href="lity/lity.css" rel="stylesheet">
+        <!--<script src="vendor/jquery.js"></script>-->
+        <script src="lity/lity.js" defer></script>
+    </head>
+    <body>
+        <header>
+        <h1>Anime Trailers</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><input class="top" type="button" value="Top Anime"></li>
+                <li><input class="upcoming" type="button" value="Upcoming Anime"></li>
+                <li></li>
+            </ul>
+        </nav>
+        <form>
+            <fieldset>
+                    <input type="text" id="search">
+                    <input class="search" type="submit" value="Search">
+            </fieldset>  
+        </form>
+        <main>
+            <div id='results'>
+            </div>
+            <div id="animeInfo" class="hidden">
+                <h2 id="title"></h2>
+                <p id="rating"></p>
+                <p id="synopsis"></p>
+                <div id="trailers">
+                </div>
+                
+            </div>
+        </main> 
+        <script src="app.js" defer></script>
+    </body>
+</html>
