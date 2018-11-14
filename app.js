@@ -29,7 +29,7 @@ function upcomingAnime(){
 function displayResults(responseJson) {
     
     for(let i = 0; i< responseJson.top.length; i++) {
-        $('#results').append(`<div id="container" class="${responseJson.top[i].title}" onclick><img class="anime" value="${responseJson.top[i].mal_id}" name="${responseJson.top[i].title}" id="${responseJson.top[i].score}" src="${responseJson.top[i].image_url}" ><div class="animeTitle">${responseJson.top[i].title}</div></div>`)
+        $('#results').append(`<div id="container" onclick class="${responseJson.top[i].title}"><img class="anime" value="${responseJson.top[i].mal_id}" name="${responseJson.top[i].title}" id="${responseJson.top[i].score}" src="${responseJson.top[i].image_url}" ><div class="animeTitle">${responseJson.top[i].title}</div></div>`)
     }
     
     $('.anime').on('click', event =>{
