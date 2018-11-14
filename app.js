@@ -54,7 +54,7 @@ function displaySearchResults(responseJson) {
     $('#results').empty();
     
     for(let i = 0; i< responseJson.results.length; i++) {
-        $('#results').append(`<div id="container"><img class="anime" value="${responseJson.results[i].mal_id}" name="${responseJson.results[i].title}" id="${responseJson.results[i].score}" src="${responseJson.results[i].image_url}" ><div class="animeTitle">${responseJson.results[i].title}</div></div>`)
+        $('#results').append(`<div id="container" onclick><img class="anime" value="${responseJson.results[i].mal_id}" name="${responseJson.results[i].title}" id="${responseJson.results[i].score}" src="${responseJson.results[i].image_url}" ><div class="animeTitle">${responseJson.results[i].title}</div></div>`)
     }
     
     trailerSearch(responseJson);
