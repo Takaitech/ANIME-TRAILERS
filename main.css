@@ -1,12 +1,23 @@
+html {
+    background-color: rgb(234,92,41);
+}
 header {
-    margin: 100px 0;
+    margin:20px 0;
+    
 }
 
 body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
     width: 1000px;
+    overflow:hidden;
+    
+}
+
+#logo {
+    height:200px;
 }
 
 fieldset {
@@ -47,7 +58,7 @@ a:hover {
 
 #results {
     font-size: 40px;
-    height: 320px;
+    height: 400px;
     width: 1000px;
     overflow: scroll;
     display: flex;
@@ -60,7 +71,7 @@ img:hover + span{
 .anime {
     height:300px;
     width: auto;
-    border: solid black 3px;
+    border: solid black 2px;
 }
 
 .animeTitle {
@@ -82,7 +93,13 @@ img:hover + span{
 }
 
 #container:hover {
-    width: auto;
+    -webkit-transform: scale(1.1); 
+      -ms-transform: scale(1.1); 
+          transform: scale(1.1);
+}
+
+.anime:hover {
+    max-width: 200px;
 }
 
 #container {
@@ -90,6 +107,7 @@ img:hover + span{
     width: 30px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 40px;
 }
 
 #trailers {
@@ -98,7 +116,6 @@ img:hover + span{
     width: 1000px;
     overflow: scroll;
     display: flex;
-    border: solid black 3px;
 }
 
 #animeInfo {
@@ -122,6 +139,31 @@ img:hover + span{
     visibility: visible;
 }
 
+h3{
+    font-size: 20px;
+}
+
+#animeInfo {
+    color:white;
+    
+}
+
+#title {
+    font-size: 50px;
+    margin: 50px 0 0 0;
+}
+
+#rating {
+    font-size:  20px;
+}
+
+#trailers {
+    width: 100%;
+    text-align: center;
+    margin-top: 80px;
+}
+
+
 .trailer {
     float: left;
     margin-left: auto;
@@ -130,23 +172,64 @@ img:hover + span{
     width: auto;
 }
 
-h3{
-    font-size: 20px;
-}
-
-#animeInfo {
-    color:white;
-}
-
 .trailer img{
     height: 200px;
     width: auto;
+    border:solid rgb(234,92,41) 2px;
+        
 }
 
 ul {
+    position: absolute;
     list-style: none;
+    left: 85px;
+    margin: 0 0;
 }
 
 ul li {
-    float: left;
+    display: inline-block;
+}
+
+#userInput{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#userInput {
+    height: 30px;
+    font-size: 20px;
+    border-style: none;
+    border-radius: 10px;
+}
+
+
+#search, .top, .upcoming{
+    border-radius: 80px;
+    height: 30px
+        
+}
+.top:hover {
+    border: black 2px solid;
+}
+
+.upcoming:hover {
+    border: black 2px solid;
+}
+
+
+#search:hover {
+    border: black 2px solid;
+}
+
+#search {
+    margin-top: 5px;
+}
+
+
+#userInput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(234,92,41);
+    opacity: 1; /* Firefox */
+}
+
+#userInput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(234,92,41);
 }

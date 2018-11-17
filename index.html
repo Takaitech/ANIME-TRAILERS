@@ -9,29 +9,31 @@
         <script src="lity/lity.js" defer></script>
     </head>
     <body>
+        
         <header>
-        <h1>Anime Trailers</h1>
+        <img id="logo" src="Untitled-1.png">
         </header>
-        <nav>
-            <ul>
-                <li><input class="top" type="button" value="Top Anime"></li>
-                <li><input class="upcoming" type="button" value="Upcoming Anime"></li>
-                <li></li>
-            </ul>
-        </nav>
         <form>
             <fieldset>
-                    <input type="text" id="search">
-                    <input class="search" type="submit" value="Search">
+                    <input id="userInput" type="text" id="search" placeholder="..."><br>
+                    <input id ="search" type="image" src="SEARCH.png" alt=”submit” name="submit" />
             </fieldset>  
         </form>
+        <nav role="navigation">
+            <div>
+                <ul>
+                    <li><input type="image" class="top" src="TOP.png"></li>
+                    <li><input type="image" class="upcoming" src="UPCOMING.png"></li>
+                    <li></li>
+                </ul>
+            </div>
+        </nav>
         <main>
             <div id='results'>
             </div>
             <div id="animeInfo" class="hidden">
                 <h2 id="title"></h2>
                 <p id="rating"></p>
-                <p id="synopsis"></p>
                 <div id="trailers">
                 </div>
                 

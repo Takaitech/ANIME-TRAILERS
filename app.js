@@ -117,9 +117,9 @@ function formatQueryParams(params) {
 
 
 function findAnime() {
-    $('.search').on('click', event => {
+    $('#search').on('click', event => {
         event.preventDefault();
-        var input = document.getElementById("search").value;
+        var input = document.getElementById("userInput").value;
         const baseurl = "https://api.jikan.moe/v3/search/anime";
         let params = {
             q: input,
