@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Watch Anime Trailers</title>
+        <title>ANIME TRAILERS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="main.css" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="lity/lity.css" rel="stylesheet">
-        <!--<script src="vendor/jquery.js"></script>-->
         <script src="lity/lity.js" defer></script>
     </head>
     <body>
-        
-        <header>
+        <header role="banner">
         <img id="logo" src="images/logo.png">
         </header>
         <form>
-            <fieldset id="searchField">
-                    <input id="userInput" type="text" id="search" placeholder="..."><br>
-                    <input id ="search" type="image" src="images/SEARCH.png" alt=”submit” name="submit" />
+            <fieldset id="searchAnime">
+                    <input id="userInput" type="text" placeholder="..."><br>
+                    <input id="search" type="image" src="images/SEARCH.png" alt=”submit” name="submit" />
             </fieldset>  
         </form>
         <nav role="navigation">
@@ -27,19 +26,19 @@
                 </ul>
             </div>
         </nav>
-        <main>
+        <main role="main">
+            <h2 id="currentPage">Top Anime</h2>
             <form>
                 <div id='results'>
                 </div>
                 <input id="selectInput" type="image" src="images/Videos.png" alt=”submit” name="submit" />
             </form>
-            <div id="animeInfo" class="hidden">
+            <section id="animeInfo" class="hidden">
                 <h2 id="title"></h2>
                 <p id="rating"></p>
                 <div id="trailers">
                 </div>
-                
-            </div>
+            </section>
         </main>
         <script src="app.js" defer></script>
     </body>

@@ -6,10 +6,8 @@ function topAnime(){
     .then(response => response.json())
     .then(responseJson => displayResults(responseJson))
     .catch(err =>{
-    $('body').text(`something went wrong ${err.message}`);
+    $('#currentPage').text(`something went wrong ${err.message}`);
     });
-    
-    $('#results').empty();
 }
 
 
@@ -24,6 +22,7 @@ function upcomingAnime(){
     });
     $('#results').empty();
 }
+
 
 function displayResults(responseJson) {
     $('#results').append(`<label id="container">
@@ -66,6 +65,7 @@ function displayResults(responseJson) {
 
 
 function displaySearchResults(responseJson) {
+    $('#currentPage').empty();
     $('#results').empty();
     $('#results').append(`<label id="container">
         <input class="selectAnime" type="radio" value="${responseJson.results[0].title}; ${responseJson.results[0].score}; ${responseJson.results[0].mal_id}" name="anime" required />
@@ -78,7 +78,10 @@ function displaySearchResults(responseJson) {
         <img class="coverArt" src="${responseJson.results[i].image_url}" alt"${responseJson.results[i].title} Cover Art">
         </label>`)
    }
-    
+    $('.coverArt').on('click', event => {
+        if($(event.currentTarget).prev().is(':checked')) { alert("it's checked"); }
+    });
+
      $('#selectInput').on('click', event => {
         event.preventDefault();
         getTitle();
@@ -107,8 +110,6 @@ function displaySearchResults(responseJson) {
 }
 
 
-
-//fetch trailers for clicked anime 
 function trailerSearch(animeData) {
         let animeId = animeData[2];
         $('#animeInfo').removeClass('hidden');
@@ -121,7 +122,6 @@ function trailerSearch(animeData) {
             $('#youtube').text(`something went wrong ${err.message}`);
         })
 }
-
 
 
 function displayVideos(responseJsonVideos) {
@@ -152,6 +152,7 @@ function formatQueryParams(params) {
 
 function findAnime() {
     $('#search').on('click', event => {
+        $('#currentPage').empty();
         event.preventDefault();
         var input = document.getElementById('userInput').value;
         const baseurl = 'https://api.jikan.moe/v3/search/anime';
@@ -168,21 +169,26 @@ function findAnime() {
         .then(response => response.json())
         .then(responseJson => displaySearchResults(responseJson))
         .catch(err =>{
-        $('body').text(`No matches`);
+        $('#currentPage').text(`No matches`);
         })
     });
 }
 
+
 function navigateAnime() {
     $('.top').on('click', event => {
         topAnime();
+        $('#currentPage').text('Top Anime ')
     });
     
     $('.upcoming').on('click', event => {
         upcomingAnime();
+        $('#currentPage').text('Upcoming Anime')
     });
 }
 
 $(findAnime);
 $(navigateAnime);
 topAnime();
+
+
