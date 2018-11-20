@@ -78,10 +78,7 @@ function displaySearchResults(responseJson) {
         <img class="coverArt" src="${responseJson.results[i].image_url}" alt"${responseJson.results[i].title} Cover Art">
         </label>`)
    }
-    $('.coverArt').on('click', event => {
-        if($(event.currentTarget).prev().is(':checked')) { alert("it's checked"); }
-    });
-
+    
      $('#selectInput').on('click', event => {
         event.preventDefault();
         getTitle();
