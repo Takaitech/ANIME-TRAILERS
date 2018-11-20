@@ -1,9 +1,21 @@
 html {
-    background-color: rgb(234,92,41);
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding: 0; 
+    margin: 0;
+    background: white url("images/api%20capstone%20background.png") no-repeat bottom center;
+    background-size: cover;
 }
 header {
-    margin:20px 0;
+    background-color: white;
+    margin:20px 0 0 0;
     
+}
+
+#searchField {
+    background-color: white;
+    height: 100px;
 }
 
 body {
@@ -11,13 +23,14 @@ body {
     text-align: center;
     margin-right: auto;
     margin-left: auto;
-    width: 1000px;
+    width: 100%;
     overflow:hidden;
     
 }
 
 #logo {
-    height:200px;
+    height:130px;
+    
 }
 
 fieldset {
@@ -29,49 +42,26 @@ legend {
 }
 
 label {
+    margin: 0 0;
+    height: 250px;
     font-size: 20px;
 }
 
-footer {
-    position: relative;
-    bottom: -200px;
-}
-
-footer a {
-    text-decoration: none;
-    color:blue
-}
-
-footer a {
-    text-decoration: none;
-    color:blue;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.dollar {
-    height:50px;
-    width: auto;
-}
 
 #results {
     font-size: 40px;
-    height: 400px;
-    width: 1000px;
+    height: 300px;
+    width: 80%;
     overflow: scroll;
     display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
 }
 
-img:hover + span{ 
-    visibility: visible;
-}
-
-.anime {
-    height:300px;
+.coverArt {
+    height:250px;
     width: auto;
-    border: solid black 2px;
 }
 
 .animeTitle {
@@ -88,26 +78,31 @@ img:hover + span{
     display: none;
 }
 
-#container:target .animeTitle {
-    background-color: aqua;
-}
-
-#container:hover {
-    -webkit-transform: scale(1.1); 
+input:checked + label {
+   /* -webkit-transform: scale(1.1); 
       -ms-transform: scale(1.1); 
-          transform: scale(1.1);
+          transform: scale(1.1);*/
+    width: auto;
 }
 
-.anime:hover {
+img:hover >label {
     max-width: 200px;
 }
 
-#container {
+.coverART {
+    border: 3px solid black;
+}
+
+label {
     float: left;
-    width: 30px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    width: 30px;
+}
+
+label:hover {
+    width: auto
 }
 
 #trailers {
@@ -180,10 +175,11 @@ h3{
 }
 
 ul {
-    position: absolute;
+    position:relative;
     list-style: none;
-    left: 85px;
     margin: 0 0;
+    bottom: 250px;
+    right: 360px;
 }
 
 ul li {
@@ -191,39 +187,35 @@ ul li {
 }
 
 #userInput{
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
+    color: rgb(234,92,40)
+    
+    
 }
 
 #userInput {
-    height: 30px;
+    height: 40px;
     font-size: 20px;
     border-style: none;
     border-radius: 10px;
+    width: 200px;
+    margin-top: 0;
+    border: 1px solid rgb(234,92,40);
+    text-align: center;
 }
 
 
-#search, .top, .upcoming{
+#search, .top, .upcoming, #selectInput{
     border-radius: 80px;
-    height: 30px
+    height: 30px;
+    width: 150px;
+    border: 1px solid rgb(234,92,40);
         
-}
-.top:hover {
-    border: black 2px solid;
-}
-
-.upcoming:hover {
-    border: black 2px solid;
-}
-
-
-#search:hover {
-    border: black 2px solid;
 }
 
 #search {
     margin-top: 5px;
 }
-
 
 #userInput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgb(234,92,41);
@@ -233,3 +225,22 @@ ul li {
 #userInput:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: rgb(234,92,41);
 }
+
+#container {
+    z-index: 100;
+}
+
+label { display: inline-block }
+label > .selectAnime{ /* HIDE RADIO */
+  opacity: 0;
+}
+
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img , input:active{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:5px solid rgb(234,92,40);
+  border-radius: 10%;
+}
+label:active { width:400px; } 

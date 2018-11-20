@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Anime Trailers</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>Watch Anime Trailers</title>
         <link href="main.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="lity/lity.css" rel="stylesheet">
         <!--<script src="vendor/jquery.js"></script>-->
         <script src="lity/lity.js" defer></script>
@@ -11,26 +11,28 @@
     <body>
         
         <header>
-        <img id="logo" src="Untitled-1.png">
+        <img id="logo" src="images/logo.png">
         </header>
         <form>
-            <fieldset>
+            <fieldset id="searchField">
                     <input id="userInput" type="text" id="search" placeholder="..."><br>
-                    <input id ="search" type="image" src="SEARCH.png" alt=”submit” name="submit" />
+                    <input id ="search" type="image" src="images/SEARCH.png" alt=”submit” name="submit" />
             </fieldset>  
         </form>
         <nav role="navigation">
             <div>
                 <ul>
-                    <li><input type="image" class="top" src="TOP.png"></li>
-                    <li><input type="image" class="upcoming" src="UPCOMING.png"></li>
-                    <li></li>
+                    <li><input type="image" class="top" src="images/TOP.png"></li>
+                    <li><input type="image" class="upcoming" src="images/UPCOMING.png"></li>
                 </ul>
             </div>
         </nav>
         <main>
-            <div id='results'>
-            </div>
+            <form>
+                <div id='results'>
+                </div>
+                <input id="selectInput" type="image" src="images/Videos.png" alt=”submit” name="submit" />
+            </form>
             <div id="animeInfo" class="hidden">
                 <h2 id="title"></h2>
                 <p id="rating"></p>
@@ -38,7 +40,7 @@
                 </div>
                 
             </div>
-        </main> 
+        </main>
         <script src="app.js" defer></script>
     </body>
 </html>

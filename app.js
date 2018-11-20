@@ -1,6 +1,6 @@
 
 function topAnime(){
-    const url = "https://api.jikan.moe/v3/top/anime/1/bypopularity"
+    const url = 'https://api.jikan.moe/v3/top/anime/1/bypopularity'
 
     fetch(url)
     .then(response => response.json())
@@ -14,7 +14,7 @@ function topAnime(){
 
 
 function upcomingAnime(){
-    const url = "https://api.jikan.moe/v3/top/anime/1/upcoming"
+    const url = 'https://api.jikan.moe/v3/top/anime/1/upcoming'
 
     fetch(url)
     .then(response => response.json())
@@ -25,86 +25,120 @@ function upcomingAnime(){
     $('#results').empty();
 }
 
-
 function displayResults(responseJson) {
+    $('#results').append(`<label id="container">
+        <input class="selectAnime" type="radio" value="${responseJson.top[0].title}; ${responseJson.top[0].score}; ${responseJson.top[0].mal_id}" name="anime" required />
+        <img class="coverArt" src="${responseJson.top[0].image_url}" alt"${responseJson.top[0].title} Cover Art">
+        </label>`)
     
-    for(let i = 0; i< responseJson.top.length; i++) {
-        $('#results').append(`<div id="container" onclick class="${responseJson.top[i].title}"><img class="anime" value="${responseJson.top[i].mal_id}" name="${responseJson.top[i].title}" id="${responseJson.top[i].score}" src="${responseJson.top[i].image_url}" ><div class="animeTitle">${responseJson.top[i].title}</div></div>`)
+   for(let i = 1; i< responseJson.top.length; i++) {
+       $('#results').append(`<label id="container">
+            <input class="selectAnime" type="radio" value="${responseJson.top[i].title}; ${responseJson.top[i].score}; ${responseJson.top[i].mal_id}" name="anime" required />
+            <img class="coverArt" src="${responseJson.top[i].image_url}" alt"${responseJson.top[i].title} Cover Art">
+            </label>`)
     }
     
-    $('.anime').on('click', event =>{
+    $('#selectInput').on('click', event => {
         event.preventDefault();
-        var clickedAnime = $(event.target).attr("name");
-        var animeId = $(event.target).attr("value");
-        var animeRating = $(event.target).attr("id");
+        getTitle();
         
-        $('#title').text(clickedAnime);
-        if (animeRating> 0) {
-            $('#rating').text("Rating: " + animeRating + " / 10");
-        } else {
-            $('#rating').text("Not yet rated");
-        }
-    });
+        function getTitle(){
+        var animeData = document.querySelector('input[name="anime"]:checked').value.split('; ');
+        displayData(animeData)
+        };
+        
+        function displayData(animeData) {
+            let title = animeData[0];
+            let score = animeData[1];
+            let animeId = animeData[2];
     
-    trailerSearch(responseJson);
+            $('#title').text(title);
+            if (score > 0) { 
+                $('#rating').text('Rating: ' + score + ' / 10');
+            } else {
+                $('#rating').text('Not yet rated');
+            }
+        
+        trailerSearch(animeData);
+        }
+    })
 }
 
 
 function displaySearchResults(responseJson) {
     $('#results').empty();
+    $('#results').append(`<label id="container">
+        <input class="selectAnime" type="radio" value="${responseJson.results[0].title}; ${responseJson.results[0].score}; ${responseJson.results[0].mal_id}" name="anime" required />
+        <img class="coverArt" src="${responseJson.results[0].image_url}" alt"${responseJson.results[0].title} Cover Art">
+        </label>`)
     
-    for(let i = 0; i< responseJson.results.length; i++) {
-        $('#results').append(`<div id="container" onclick><img class="anime" value="${responseJson.results[i].mal_id}" name="${responseJson.results[i].title}" id="${responseJson.results[i].score}" src="${responseJson.results[i].image_url}" ><div class="animeTitle">${responseJson.results[i].title}</div></div>`)
-    }
+   for(let i = 1; i< responseJson.results.length; i++) {
+       $('#results').append(`<label id="container">
+        <input class="selectAnime" type="radio" value="${responseJson.results[i].title}; ${responseJson.results[i].score}; ${responseJson.results[i].mal_id}" name="anime" required />
+        <img class="coverArt" src="${responseJson.results[i].image_url}" alt"${responseJson.results[i].title} Cover Art">
+        </label>`)
+   }
     
-    trailerSearch(responseJson);
-    
-    $('.anime').on('click', event =>{
+     $('#selectInput').on('click', event => {
         event.preventDefault();
-        var clickedAnime = $(event.target).attr("name");
-        var animeId = $(event.target).attr("value");
-        var animeRating = $(event.target).attr("id");
-        $('#title').text(clickedAnime);
-        $('#rating').text("Rating: " + animeRating + " / 10");
-    });
+        getTitle();
+        function getTitle(){
+        // Get the selected score (assuming one was selected)
+        var animeData = document.querySelector('input[name="anime"]:checked').value.split('; ');
+        displayData(animeData);
+        };
+        function displayData(animeData) {
+            let title = animeData[0];
+            let score = animeData[1];
+            let animeId = animeData[2];
+            console.log(title);
+            console.log(score);
+            console.log(animeId);
+            $('#title').text(title);
+            if (title > 0) { 
+                $('#rating').text('Rating: ' + score + ' / 10');
+            } else {
+                $('#rating').text('Not yet rated');
+            }
+            
+        trailerSearch(animeData);
+        } 
+     })
 }
 
 
 
 //fetch trailers for clicked anime 
-function trailerSearch(responseJson) {
-    $('.anime').on('click', event =>{
-        event.preventDefault();
-        var clickedAnime = $(event.target).attr("name");
-        var animeId = $(event.target).attr("value");
-        $("#animeInfo").removeClass("hidden");
-        $("#animeInfo").addClass("visible");
-        
+function trailerSearch(animeData) {
+        let animeId = animeData[2];
+        $('#animeInfo').removeClass('hidden');
+        $('#animeInfo').addClass('visible');
     
         fetch("https://api.jikan.moe/v3/anime/" + animeId + "/videos")
         .then(response => response.json())
-        .then(responseJsonVideos => displayVideos(responseJsonVideos, clickedAnime))
+        .then(responseJsonVideos => displayVideos(responseJsonVideos))
         .catch(err =>{
             $('#youtube').text(`something went wrong ${err.message}`);
-            
         })
-    });
 }
 
 
-function displayVideos(responseJsonVideos, clickedAnime) {
-    if(responseJsonVideos.promo > [0]) {
+
+function displayVideos(responseJsonVideos) {
+    $('#trailers').empty();
+    
+    if(responseJsonVideos.promo.length > 0) {
         for(let i = 0; i < responseJsonVideos.promo.length; i++) {
         $('#trailers').append(`<div class="trailer"><a href="${responseJsonVideos.promo[i].video_url}" data-lity><img src="${responseJsonVideos.promo[i].image_url}"></a><h3>${responseJsonVideos.promo[i].title}<h3></div>`)
-        };
+        }
     } else {
-        $('#trailers').append(`<h4>No videos Found<h4>`);
+        $('#trailers').html(`<h4>No videos Found<h4>`);
     }
     
-    $("#animeInfo").on('click', event => {
-        $("#trailers").empty();
-        $("#animeInfo").removeClass("visible");
-        $("#animeInfo").addClass("hidden");
+    $('#animeInfo').on('click', event => {
+        $('#trailers').empty();
+        $('#animeInfo').removeClass('visible');
+        $('#animeInfo').addClass('hidden');
     }); 
 }
 
@@ -119,27 +153,25 @@ function formatQueryParams(params) {
 function findAnime() {
     $('#search').on('click', event => {
         event.preventDefault();
-        var input = document.getElementById("userInput").value;
-        const baseurl = "https://api.jikan.moe/v3/search/anime";
+        var input = document.getElementById('userInput').value;
+        const baseurl = 'https://api.jikan.moe/v3/search/anime';
         let params = {
             q: input,
             page: 1,
-            type: "tv",
+            type: 'tv',
             limit: 10,
         };
         
-        let url = baseurl + "?" + formatQueryParams(params);
+        let url = baseurl + '?' + formatQueryParams(params);
          
-        
         fetch(url)
         .then(response => response.json())
         .then(responseJson => displaySearchResults(responseJson))
         .catch(err =>{
-        $('body').text(`something went wrong ${err.message}`);
+        $('body').text(`No matches`);
         })
     });
 }
-
 
 function navigateAnime() {
     $('.top').on('click', event => {
@@ -150,7 +182,6 @@ function navigateAnime() {
         upcomingAnime();
     });
 }
-
 
 $(findAnime);
 $(navigateAnime);
