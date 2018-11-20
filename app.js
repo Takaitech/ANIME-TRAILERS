@@ -26,7 +26,7 @@ function upcomingAnime(){
 
 function displayResults(responseJson) {
     $('#results').append(`<label id="container">
-        <input class="selectAnime" type="radio" value="${responseJson.top[0].title}; ${responseJson.top[0].score}; ${responseJson.top[0].mal_id}" name="anime" required />
+        <input class="selectAnime" type="radio" value="${responseJson.top[0].title}; ${responseJson.top[0].score}; ${responseJson.top[0].mal_id}" name="anime" checked required />
         <img class="coverArt" src="${responseJson.top[0].image_url}" alt"${responseJson.top[0].title} Cover Art">
         </label>`)
     
@@ -68,7 +68,7 @@ function displaySearchResults(responseJson) {
     $('#currentPage').empty();
     $('#results').empty();
     $('#results').append(`<label id="container">
-        <input class="selectAnime" type="radio" value="${responseJson.results[0].title}; ${responseJson.results[0].score}; ${responseJson.results[0].mal_id}" name="anime" required />
+        <input class="selectAnime" type="radio" value="${responseJson.results[0].title}; ${responseJson.results[0].score}; ${responseJson.results[0].mal_id}" name="anime" checked required />
         <img class="coverArt" src="${responseJson.results[0].image_url}" alt"${responseJson.results[0].title} Cover Art">
         </label>`)
     
