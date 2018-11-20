@@ -8,11 +8,17 @@ A community driven, book recommendation application. Users can create lists of t
 I have periods of time where finding new anime to watch gets tough 
 
 ## Screenshots
-Landing page (Screen Shot 2018-11-20 at 11.12.26 AM.png)
+Landing page:
 
-Trailer viewing page (Screen Shot 2018-11-20 at 11.12.50 AM.png)
+![Image] (screenshots/Screen Shot 2018-11-20 at 11.12.26 AM.png)
 
-Responsive Layout (Screen Shot 2018-11-20 at 11.14.05 AM.png)
+Trailer viewing page:
+
+![Image] (screenshots/Screen Shot 2018-11-20 at 11.12.50 AM.png)
+
+Responsive Layout: 
+
+![Image] (screenshots/Screen Shot 2018-11-20 at 11.14.05 AM.png)
 
 ## Demo
 
