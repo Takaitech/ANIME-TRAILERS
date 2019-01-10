@@ -1,8 +1,6 @@
 
 # ANIME TRAILERS
 
-A community driven, book recommendation application. Users can create lists of their favorite books and have others recommended to them.
-
 ## Inspiration
 
 Sometimes I struggle finding new anime to dive into watching that interests me and im sure its a problem for other fans of anime as well, so I  wanted to create a web page that let me explore new and current anime and get a preview of it right on the spot. Instead of having to go search the web for trailers and promos and having to deal with finding the right season Its all available right in this web app.
