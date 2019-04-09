@@ -7,7 +7,7 @@ Sometimes I struggle finding new anime to dive into watching that interests me a
 
 ## Description 
 
-This web app allows the user to select from top or upcoming animes and pulls up a series of trailers or promo videos straight into the browser where they can preview the anime. It also allows them to search for animes by name.
+This web app allows the user to select from top or upcoming anime and pulls up a series of trailers or promo videos straight into the browser where they can preview the anime. It also allows them to search for a specific anime by name.
 
 ## Screenshots
 Landing page:
